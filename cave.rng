@@ -45,8 +45,20 @@ element cave {
 				xsd:int,
 				attribute unit {"feet" | "meters"}
 			}?,
-			attribute recorded {date},
-			attribute recorder {xsd:string},
+
+			element entry_status {xsd:string}?,
+			element equipment {xsd:string}?,
+			element techniques {xsd:string}?,
+
+			element type {"horizontal" | "vertical"}?,
+			element description {xsd:string}?,
+			element field_indication {xsd:string}?,
+
+			element geoformation {xsd:string}?,
+			element physiographic {xsd:string}?,
+
+			element recorded {date},
+			element recorder {xsd:string},
 		}+,
 		element discovered {
 			attribute date {xsd:date},
