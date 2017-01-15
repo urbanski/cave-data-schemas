@@ -28,10 +28,23 @@ element cave {
 	element entrance {
 		element name {text},
 		element location {
-			attribute lat {text},
-			attribute lon {text},
-			attribute datum {text},
-			attribute format {text},
+			element lat {text},
+			element lon {text},
+			element datum {text},
+			element format {text},
+
+			#location accuracy +=
+			element accuracy {
+				xsd:int,
+				attribute unit { "feet" | "meters" }
+			}?,
+
+			element topo {xsd:string}?,
+			element topo_indication {xsd:string}?,
+			element elevation {
+				xsd:int,
+				attribute unit {"feet" | "meters"}
+			}?,
 			attribute recorded {date},
 			attribute recorder {xsd:string},
 		}+,
@@ -39,7 +52,7 @@ element cave {
 			attribute date {xsd:date},
 			attribute by {text}+,
 			attribute notes {text}
-		}
+		}?
 	}+,
 
 	#narrative
