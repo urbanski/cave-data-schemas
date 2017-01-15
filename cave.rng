@@ -3,30 +3,31 @@
 default namespace = "http://www.cave-data.org/cave"
 
 element cave {
-	#cave name
+	#cave system name
 	element name {xsd:string},
 
-	#is the resource a karst feature?
-	element isFeature {xsd:boolean},
-
-	#length
+	#total system length
 	element length {
 		xsd:positiveInteger,
 		attribute unit {"feet" | "meters"}
 	},
 
-	#depth
+	#total system depth
 	element depth {
 		xsd:positiveInteger,
 		attribute unit {"feet" | "meters"}
 	},
 
-	#optional code
-	element code {text}?,
+	#optional survey code
+	element surveycode {text}?,
 
-	#entrance
+	#describes a system entrance
 	element entrance {
+
+		#entrance name
 		element name {text},
+
+		#entrance location
 		element location {
 			element lat {text},
 			element lon {text},
@@ -46,7 +47,11 @@ element cave {
 				attribute unit {"feet" | "meters"}
 			}?,
 
-			element entry_status {xsd:string}?,
+			element entry_status {"open" | "restricted" | "closed"}?,
+			element ownership {
+				xsd:string,
+				attribute type {"commercial" | "private", "government" | "preserve" | "unknown"}?
+			}
 			element equipment {xsd:string}?,
 			element techniques {xsd:string}?,
 
