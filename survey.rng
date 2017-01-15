@@ -1,0 +1,19 @@
+# (c) 2017 cave-data.org
+
+default namespace = "http://www.cave-data.org/cave"
+
+element survey {
+	element date {xsd:date},
+	element surveyor {xsd:string},
+	element shot {
+		attribute from {xsd:string},
+		attribute to {xsd:string},
+		attribute length {xsd:int},
+		attribute azimuth {xsd:float},
+		attribute inclination {xsd:float},
+		attribute left {xsd:int},
+		attribute right {xsd:int},
+		attribute up {xsd:int},
+		attribute down {xsd:int}
+	}*
+}
