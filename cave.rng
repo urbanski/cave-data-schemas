@@ -1,0 +1,52 @@
+# (c) 2017 cave-data.org
+
+default namespace = "http://www.cave-data.org/cave"
+
+element cave {
+	#cave name
+	element name {xsd:string},
+
+	#is the resource a karst feature?
+	element isFeature {xsd:boolean},
+
+	#length
+	element length {
+		xsd:positiveInteger,
+		attribute unit {"feet" | "meters"}
+	},
+
+	#depth
+	element depth {
+		xsd:positiveInteger,
+		attribute unit {"feet" | "meters"}
+	},
+
+	#optional code
+	element code {text}?,
+
+	#entrance
+	element entrance {
+		element name {text},
+		element location {
+			attribute lat {text},
+			attribute lon {text},
+			attribute datum {text},
+			attribute format {text},
+			attribute recorded {date},
+			attribute recorder {xsd:string},
+		}+,
+		element discovered {
+			attribute date {xsd:date},
+			attribute by {text}+,
+			attribute notes {text}
+		}
+	}+,
+
+	#narrative
+	element narrative {
+		element title {text},
+		element body {text},
+		element author {text},
+		element submitted {xsd:date},
+	}+
+}
